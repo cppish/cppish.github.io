@@ -609,6 +609,9 @@ article footer .tags:before {
   margin-right: 10px;
   display: inline-block;
 }
+#sidebar .weibo {
+  width: 100%;
+}
 #footer {
   width: 680px;
   margin: 20px auto 0;
