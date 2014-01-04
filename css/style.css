@@ -546,7 +546,7 @@ article footer .tags:before {
   box-shadow: rgba(255,255,255,0.3) 0 1px 0;
 }
 #sidebar {
-  max-width: 750px;
+  max-width: 680px;
   margin: 0 auto;
   padding: 10px 0;
   color: #fff;
