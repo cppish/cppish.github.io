@@ -611,6 +611,7 @@ article footer .tags:before {
 }
 #sidebar .weibo {
   width: 100%;
+  margin-left: 0%;
 }
 #footer {
   width: 680px;
