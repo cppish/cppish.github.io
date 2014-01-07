@@ -86,8 +86,8 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <span class="keyword">from</span> time <span class="keyword">import</span> localtime, strftime
 
 <span class="class"><span class="keyword">class</span> <span class="title">InsertTimeCommand</span><span class="params">(sublime_plugin.TextCommand)</span>:</span>
-<span class="number">2</span><span class="keyword">def</span> run(self, edit):
-<span class="number">22</span>self.view.insert(edit, self.view.sel()[<span class="number">0</span>].b, strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>, localtime()))
+	<span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self, edit)</span>:</span>
+		self.view.insert(edit, self.view.sel()[<span class="number">0</span>].b, strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>, localtime()))
 </pre></figure>
 
 <p>另存为user目录下的一个py文件<br>3.其实这个时候在<code>ctrl+` </code>下已经可以调用这个命令了<code>view.run_command(&quot;insert_time&quot;)</code> <em>注意这个名字哦~</em><br>4.<code>Preferences -&gt; key bindding - user</code> 下在json里添加</p>
