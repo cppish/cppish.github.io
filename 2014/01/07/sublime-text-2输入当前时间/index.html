@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>生词本 | 我还在碎碎念</title>
+  <title>sublime text 2输入当前时间 | 我还在碎碎念</title>
   <meta name="author" content="Fang Yong">
   
   <meta name="description" content="c++ | java | javascript | 分布式 | 程序员">
@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <meta property="og:title" content="生词本"/>
+  <meta property="og:title" content="sublime text 2输入当前时间"/>
   <meta property="og:site_name" content="我还在碎碎念"/>
 
   <link rel="alternate" href="/atom.xml" title="我还在碎碎念" type="application/atom+xml">
@@ -64,19 +64,45 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="clearfix"></div>
 </nav>
 <div class="clearfix"></div></header>
-    <div class="content"><article class="page">
+    <div class="content"><article class="post">
   <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-07T08:05:54.000Z"><a href="/2014/01/07/sublime-text-2输入当前时间/">1月 7 2014</a></time>
     
     
   
-    <h1 class="title">生词本</h1>
+    <h1 class="title">sublime text 2输入当前时间</h1>
   
 
   </header>
   
   <div class="entry">
     
-      <p><code>verbal</code> | 2014-01-07<br><code>coefficient</code> | 2014-01-07<br><code>arose</code> | 2014-01-07<br><code>amplification</code> | 2014-01-07 14:37:30<br><code>plausible</code> | 2014-01-07 14:41:37</p>
+      <p>作为最性感的编辑器, sublime text 2确实是超越了之前一直在用的notepad++太多。</p>
+<p>在编辑 碎碎念 的生词页面的时候我想在页面后插入当前时间来表示这个单词被refresh的最新的时间。每次都要看右下角的时钟太蛋疼了。写了几次时间不能忍了之后准备写个简单的插件。</p>
+<p>sublime text 2的<a href="http://docs.sublimetext.info/en/sublime-text-2/" target="_blank">插件文档页面</a>让人太想吐槽了…呵呵居然要自己查看一个zip包里头的接口使用文档（嗯毕竟是个人作品, 吐槽归吐槽，还是得大力支持啊）<br>发现整个插件开发流程还是蛮顺畅的。<br>1.<code>Tools -&gt; new plugin</code> 会自动新建一个<code>command</code>类型的插件<br>2.编辑代码如下</p>
+<figure class="highlight lang-python"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="keyword">import</span> sublime, sublime_plugin
+<span class="keyword">from</span> time <span class="keyword">import</span> localtime, strftime
+
+<span class="class"><span class="keyword">class</span> <span class="title">InsertTimeCommand</span><span class="params">(sublime_plugin.TextCommand)</span>:</span>
+	<span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self, edit)</span>:</span>
+		self.view.insert(edit, self.view.sel()[<span class="number">0</span>].b, strftime(<span class="string">"%Y-%m-%d %H:%M:%S"</span>, localtime()))
+</pre></td></tr></table></figure>
+
+<p>另存为user目录下的一个py文件<br>3.其实这个时候在<code>ctrl+` </code>下已经可以调用这个命令了<code>view.run_command(&quot;insert_time&quot;)</code> <em>注意这个名字哦~</em><br>4.<code>Preferences -&gt; key bindding - user</code> 下在json里添加</p>
+<figure class="highlight lang-javascript"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>{ <span class="string">"keys"</span>: [<span class="string">"ctrl+t"</span>], <span class="string">"command"</span>: <span class="string">"insert_time"</span> }
+</pre></td></tr></table></figure>
+
+<p>大功告成！现在已经可以用 <code>ctrl+t</code>快捷键输入当前时间了！ Just like the old days :)</p>
+<p>不要低估一个程序员偷懒的心…..</p>
 
     
   </div>
@@ -84,6 +110,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
       
       
+  
+  <div class="tags">
+    <a href="/tags/sublime text 2/">sublime text 2</a>, <a href="/tags/插件/">插件</a>
+  </div>
+
     
     <div class="clearfix"></div>
   </footer>
@@ -92,7 +123,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 <section id="comment">
   <h1 class="title">留言</h1>
-  <div class="ds-thread" data-title="生词本">
+  <div class="ds-thread" data-title="sublime text 2输入当前时间">
   </div>
 </section>
 </div>
