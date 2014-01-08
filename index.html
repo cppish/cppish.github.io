@@ -96,7 +96,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <p>一般词典放内存，倒排表放硬盘。布尔查询转化为对倒排表求交集并集的过程。所以一般会<strong>将倒排表按照docId排序</strong>。对于交集操作可以使用mergesort类似的方法在线性时间内求得交集。布尔查询的优化，一般需要估算每个子项的size，把size小的先做and和or</p>
 <h4 id="-6709-5e8f-68c0-7d22-6a21-578b-_ranked_retrieval_model">有序检索模型 ranked retrieval model</h4>
 <p>:    词项邻近，指定查询中的两个词应该在文档中互相靠近（中间隔多少个词，是某在某个单元里，例如同一句话）</p>
-<p>布尔查询有非常高的透明度和控制力，很多图书馆的搜索都是用这样简单而高效的模型。有非常高的准确率和召回率<br>其上的优化有很多<br>1.词项表的容错能力<br>2.概念的复合短语 如 operating system不是 operating AND system<br>3.利用好词频来做可信度<br>4.返回结果的排序 对文档的好坏进行评分</p>
+<p>布尔查询有非常高的透明度和控制力，很多图书馆的搜索都是用这样简单而高效的模型。有非常高的准确率和召回率<br>其上的优化有很多<br>1.词项表的容错能力<br>2.概念的复合短语 如 operating system不是 operating AND system<br>3.利用好词频来做可信度<br>4.返回结果的排序 对文档的好坏进行评分<br>5.逻辑与（and）和逻辑或（or）会导致检索结果在准确率和召回率向两个极端发展，很难达到合理的均衡状态</p>
 
     
   </div>
