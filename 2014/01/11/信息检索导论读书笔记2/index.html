@@ -83,7 +83,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <h4 id="-8bcd-6761-5316-_tokenization">词条化 tokenization</h4>
 <p>:    编码 二进制(docx) 非线性可扫描（阿拉伯文）<br>停用词 连字符 单引号的英文中不同的意义 不是简单的空格分隔。汉语需要分词。<br>停用词 stop words, 一般是200-300个词语。现在的IR系统，一般不去除stop words，因为增加的开销并不大，但’as we may think’这样的短语中去除了停用词之后就无意义了。一般通过文档频率等统计指标来惩罚停用词而不是直接去除停用词。</p>
 <h4 id="-8bcd-6761-5f52-4e00-5316-_token_normalization">词条归一化 token normalization</h4>
-<p>:    将不完全一致的词条归为一个<strong>等价类</strong> U.S.A == USA….. case-folding大小写转化, 一般可以直接全部转化为小写 因为用户的query可能就是小写的。 美式英式拼写。西班牙文里的音调不同导致意义不同。 世界是只有60%的网页是英文。</p>
+<p>:    将不完全一致的词条归为一个<strong>等价类</strong> U.S.A == USA<br>case-folding大小写转化, 一般可以直接全部转化为小写 因为用户的query可能就是小写的。 美式英式拼写。西班牙文里的音调不同导致意义不同。 世界上只有60%的网页是英文。</p>
 <h4 id="-8bcd-5e72-8fd8-539f-_stemming">词干还原 stemming</h4>
 <p>:    去除单词两端词缀过程 经典的<a href="http://tartarus.org/martin/PorterStemmer/" target="_blank">Porter算法</a></p>
 <h4 id="-6587-6863-5355-4f4d-_documnet_unit">文档单位 documnet unit</h4>
