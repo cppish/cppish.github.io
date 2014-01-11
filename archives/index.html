@@ -86,10 +86,26 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
       <h2 id="-8bcd-9879-8bcd-5178-53ca-5012-6392-8bb0-5f55-8868-">词项词典及倒排记录表</h2>
 <h4 id="-8bcd-6761-5316-_tokenization">词条化 tokenization</h4>
-<p>:    编码 二进制(docx) 非线性可扫描（阿拉伯文）</p>
+<p>:    编码 二进制(docx) 非线性可扫描（阿拉伯文）<br>停用词 连字符 单引号的英文中不同的意义 不是简单的空格分隔。汉语需要分词。<br>停用词 stop words, 一般是200-300个词语。现在的IR系统，一般不去除stop words，因为增加的开销并不大，但’as we may think’这样的短语中去除了停用词之后就无意义了。一般通过文档频率等统计指标来惩罚停用词而不是直接去除停用词。</p>
+<h4 id="-8bcd-6761-5f52-4e00-5316-_token_normalization">词条归一化 token normalization</h4>
+<p>:    将不完全一致的词条归为一个<strong>等价类</strong> U.S.A == USA….. case-folding大小写转化, 一般可以直接全部转化为小写 因为用户的query可能就是小写的。 美式英式拼写。西班牙文里的音调不同导致意义不同。 世界是只有60%的网页是英文。</p>
+<h4 id="-8bcd-5e72-8fd8-539f-_stemming">词干还原 stemming</h4>
+<p>:    去除单词两端词缀过程<br><a href="http://tartarus.org/martin/PorterStemmer/" target="_blank">Porter算法</a></p>
 <h4 id="-6587-6863-5355-4f4d-_documnet_unit">文档单位 documnet unit</h4>
-<p>:    索引粒度(indexing granularity, 把书，章节，段落，句子作为粒度？)。  </p>
-<p>1.粒度小，正确率高召回率低，容易错过较重要的段落<br>2.粒度大，正确率低召回率高</p>
+<p>:    索引粒度(indexing granularity, 把书，章节，段落，句子作为文档单位粒度)。  </p>
+<ol>
+<li>粒度小，正确率高召回率低，容易错过较重要的段落</li>
+<li>粒度大，正确率低召回率高</li>
+</ol>
+<h4 id="-57fa-4e8e-8df3-8f6c-8868-7684-5012-6392-8bb0-5f55-7684-5feb-901f-5408-5e76-7b97-6cd5-">基于跳转表的倒排记录的快速合并算法</h4>
+<p>:    <a href="http://en.wikipedia.org/wiki/Skip_list" target="_blank">skip list</a> 在线性merge的时候能够快速跳过比较项目以提高合并速度（求AND时）<br><img src="http://cppish-github-io.qiniudn.com/blogskiplist.PNG" alt="skip list"></p>
+<p>每个$\sqrt{P}处均匀放置跳表指针，其中P是倒排记录表的长度。 </p>
+<h4 id="-542b-4f4d-7f6e-4fe1-606f-7684-5012-6392-8bb0-5f55-8868-53ca-77ed-8bed-67e5-8be2-">含位置信息的倒排记录表及短语查询</h4>
+<p>单词作为粒度的倒排表完全丢失了文档的短语之间的邻近信息（认为文档其实是bag of words的模型），在处理短语（如人名时候）不够精确。</p>
+<ol>
+<li>二元词索引，连续的两个词作为短语（biword）作为词项</li>
+<li>位置信息索引，词项-&gt;文档ID（位置1，位置2…）</li>
+</ol>
 
     
   </div>
@@ -264,7 +280,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 20.00px;">倒排索引</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 20.00px;">倒排索引</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a>
   </div>
 </div>
 
@@ -342,5 +358,35 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   })(jQuery);
 </script>
 
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>

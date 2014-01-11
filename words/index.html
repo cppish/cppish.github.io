@@ -76,7 +76,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   
   <div class="entry">
     
-      <p><code>verbal</code> | 2014-01-07<br><code>coefficient</code> | 2014-01-07<br><code>arose</code> | 2014-01-07<br><code>amplification</code> | 2014-01-07 14:37:30<br><code>plausible</code> | 2014-01-07 14:41:37<br><code>corpus</code> | 2014-01-08 00:59:01</p>
+      <p><code>verbal</code> | 2014-01-07<br><code>coefficient</code> | 2014-01-07<br><code>arose</code> | 2014-01-07<br><code>amplification</code> | 2014-01-07 14:37:30<br><code>plausible</code> | 2014-01-07 14:41:37<br><code>corpus</code> | 2014-01-08 00:59:01<br><code>granularity</code> | 2014-01-08 11:07:39<br><code>discriminative</code> | 2014-01-10 10:06:59<br><code>polysemy</code> | 2014-01-10 10:12:11<br><code>substantiate</code> | 2014-01-10 10:13:01<br><code>synonymy</code> | 2014-01-10 10:13:41<br><code>multinomial</code> | 2014-01-10 10:15:29<br><code>neglect</code> | 2014-01-10 10:18:47<br><code>broccoli</code> | 2014-01-10 10:40:13<br><code>albeit</code> | 2014-01-10 10:45:42<br><code>compendium</code> | 2014-01-10 11:53:53<br><code>stochastic</code> | 2014-01-10 11:54:45<br><code>linguistics</code> | 2014-01-10 11:56:09<br><code>empirical</code> | 2014-01-10 11:58:13<br><code>disguise</code> | 2014-01-10 12:01:26<br><code>inversion</code> | 2014-01-10 12:09:52<br><code>religious</code> | 2014-01-10 14:01:58<br><code>binomial</code> | 2014-01-10 16:50:18<br><code>preliminary</code> | 2014-01-10 18:01:46</p>
 
     
   </div>
@@ -122,7 +122,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 20.00px;">倒排索引</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 20.00px;">倒排索引</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a>
   </div>
 </div>
 
@@ -200,5 +200,35 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   })(jQuery);
 </script>
 
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>
