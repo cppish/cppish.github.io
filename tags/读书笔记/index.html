@@ -103,9 +103,11 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <h4 id="-542b-4f4d-7f6e-4fe1-606f-7684-5012-6392-8bb0-5f55-8868-53ca-77ed-8bed-67e5-8be2-">含位置信息的倒排记录表及短语查询</h4>
 <p>单词作为粒度的倒排表完全丢失了文档的短语之间的邻近信息（认为文档其实是bag of words的模型），在处理短语（如人名时候）不够精确。</p>
 <ol>
-<li>二元词索引，连续的两个词作为短语（biword）作为词项</li>
+<li>二元词索引，连续的两个词作为短语（biword）作为词项。中文中常用的索引方法</li>
 <li>位置信息索引，词项-&gt;文档ID（位置1，位置2…）</li>
+<li>混合索引，一些短语使用二元索引，一些加上位置索引。单个索引可能出现在很多文档（常用词），在是混合在一起只出现少数文档中，那么就应该加位置索引。如 The Who。</li>
 </ol>
+<p>索引的设计重点是要考虑索引的存储开销和获得的查询加速</p>
 
     
   </div>
@@ -200,7 +202,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 20.00px;">倒排索引</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 20.00px;">倒排索引</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a>
   </div>
 </div>
 
