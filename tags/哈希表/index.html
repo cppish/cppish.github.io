@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>归档 | 我还在碎碎念</title>
+  <title>哈希表 | 我还在碎碎念</title>
   <meta name="author" content="Fang Yong">
   
   <meta name="description" content="c++ | java | javascript | 分布式 | 程序员">
@@ -65,7 +65,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 </nav>
 <div class="clearfix"></div></header>
     <div class="content">
-<h2 class="archive-title">归档</h2>
+<h2 class="archive-title tag">哈希表</h2>
 
 
   
@@ -95,140 +95,6 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <h6 id="-8f6e-6392-7d22-5f15-_permuterm_intex">轮排索引 permuterm intex</h6>
 <p>在字符集中引入一个特殊字符$, 用来标记文字的结尾。对于词项hello,其实是hello$,我们建立其所有轮排的倒排索引表。<br><img src="http://cppish-github-io.qiniudn.com/blogpermuterm_index.PNG" alt="permuterm_index"><br>对于查询<code>m*n</code>, 先转换为<code>*</code>在最后的的查询，即为<code>n$m*</code>。用<code>n$m*</code>去搜索轮排索引。对于<code>fi*mo*er</code>这种查询，先搜索<code>er$fi*</code>, 在从结果中过滤掉不包含<code>mo</code>的结果，用结果再去查倒排索引</p>
 <p>轮排索引的空间消耗会急剧增长，因为要轮排所有的可能。</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-11T10:16:06.000Z"><a href="/2014/01/11/信息检索导论读书笔记2/">1月 11 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/11/信息检索导论读书笔记2/">信息检索导论读书笔记【二】</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="-8bcd-9879-8bcd-5178-53ca-5012-6392-8bb0-5f55-8868-">词项词典及倒排记录表</h2>
-<h4 id="-8bcd-6761-5316-_tokenization">词条化 tokenization</h4>
-<p>:    编码 二进制(docx) 非线性可扫描（阿拉伯文）<br>停用词 连字符 单引号的英文中不同的意义 不是简单的空格分隔。汉语需要分词。<br>停用词 stop words, 一般是200-300个词语。现在的IR系统，一般不去除stop words，因为增加的开销并不大，但’as we may think’这样的短语中去除了停用词之后就无意义了。一般通过文档频率等统计指标来惩罚停用词而不是直接去除停用词。</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/01/11/信息检索导论读书笔记2/#more" class="more-link">阅读更多</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-07T16:21:36.000Z"><a href="/2014/01/08/信息检索导论读书笔记1/">1月 8 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/08/信息检索导论读书笔记1/">信息检索导论读书笔记【一】</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p><a href="http://book.douban.com/subject/5252170/" target="_blank">信息检索导论</a>算是IR领域内的一个经典教材了。由于本科时候其实没有系统接触这方面的知识。准备按照这本入门书籍来对信息检索相关的知识做个回顾和总结。<br>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/01/08/信息检索导论读书笔记1/#more" class="more-link">阅读更多</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-07T08:05:54.000Z"><a href="/2014/01/07/sublime-text-2输入当前时间/">1月 7 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/07/sublime-text-2输入当前时间/">sublime text 2输入当前时间</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p>作为最性感的编辑器, sublime text 2确实是超越了之前一直在用的notepad++太多。</p>
-<p>在编辑 碎碎念 的<a href="http://cppish.github.io/words/" target="_blank">生词页面</a>的时候我想在页面后插入当前时间来表示这个单词被refresh的最新的时间。每次都要看右下角的时钟太蛋疼了。每次在hexo里手动新建md文件时都需要输入当前时间。写了几次时间不能忍了之后准备写个简单的插件。</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/01/07/sublime-text-2输入当前时间/#more" class="more-link">阅读更多</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-04T03:38:51.000Z"><a href="/2014/01/04/hello-world/">1月 4 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/04/hello-world/">Hello World</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <p>Hello, the world needs you.</p>
 
     
   </div>
