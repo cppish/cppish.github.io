@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>信息检索导论读书笔记【一】 | 我还在碎碎念</title>
+  <title>最小哈希算法 | 我还在碎碎念</title>
   <meta name="author" content="Fang Yong">
   
   <meta name="description" content="c++ | java | javascript | 分布式 | 程序员">
@@ -12,7 +12,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <meta property="og:title" content="信息检索导论读书笔记【一】"/>
+  <meta property="og:title" content="最小哈希算法"/>
   <meta property="og:site_name" content="我还在碎碎念"/>
 
   <link rel="alternate" href="/atom.xml" title="我还在碎碎念" type="application/atom+xml">
@@ -68,36 +68,18 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <header>
     
       <div class="icon"></div>
-      <time datetime="2014-01-07T16:21:36.000Z"><a href="/2014/01/08/信息检索导论读书笔记1/">1月 8 2014</a></time>
+      <time datetime="2014-01-13T01:59:09.000Z"><a href="/2014/01/13/信息增益/">1月 13 2014</a></time>
     
     
   
-    <h1 class="title">信息检索导论读书笔记【一】</h1>
+    <h1 class="title">最小哈希算法</h1>
   
 
   </header>
   
   <div class="entry">
     
-      <p><a href="http://book.douban.com/subject/5252170/" target="_blank">信息检索导论</a>算是IR领域内的一个经典教材了。由于本科时候其实没有系统接触这方面的知识。准备按照这本入门书籍来对信息检索相关的知识做个回顾和总结。<br><a id="more"></a>  </p>
-<p><img src="http://img5.douban.com/lpic/s4462767.jpg" alt="信息检索导论"><br>大体上会按照书本二十多章的顺序。希望能有自己的感悟。看的时候使用的是图灵社区的电子版，配合的<a href="http://www.stanford.edu/class/cs276/" target="_blank">cs276@stanford</a> cs276的课程推荐书籍里头有几本重量级的，以后有空的话也准备看一下。话不多说，开始第一章。 </p>
-<h2 id="-5e03-5c14-68c0-7d22-_Boolean_retrieval">布尔检索 Boolean retrieval</h2>
-<h4 id="-4fe1-606f-68c0-7d22-">信息检索</h4>
-<p>:    信息检索是从大规模非结构化数据（通常是文本）的集合（通常保存在计算机上）中找出满足用户信息需求的资料（通常是文档）的过程</p>
-<p>结构化，半结构化，非结构化重点区别在于<strong>有没有清晰和明显的语义结构</strong></p>
-<p>线性地扫描文档进行检索的方式叫做<a href="http://en.wikipedia.org/wiki/Grep" target="_blank">grepping</a>。<br>    grep , g/include/p, g/regex/p, 这就是grep得名的原因。。</p>
-<h4 id="term_document_matrix">term document matrix</h4>
-<p>:    单词X文档的一个矩阵。用户的query转化为对矩阵的多个行求 AND OR NOT操作，最后得到为1的docuemnt就是query的结果</p>
-<p>98%的矩阵元素其实是0，即单词X文档矩阵有非常高的稀疏性。我们关心的只是为1的那些文档。</p>
-<h4 id="-5012-6392-7d22-5f15-_Inverted_index">倒排索引 Inverted index</h4>
-<p>:    词项到文档的一个索引。词项记录出现该词项的文档列表<br>词典一般按照词项的自然序进行排序，词典一般还会记录词频和单词出现位置。</p>
-<h4 id="-6587-6863-9891-7387-_Document_frequency">文档频率 Document frequency</h4>
-<p>:    词项出现的文档数目，即倒排表的长度</p>
-<p>一般词典放内存，倒排表放硬盘。布尔查询转化为对倒排表求交集并集的过程。所以一般会<strong>将倒排表按照docId排序</strong>。对于交集操作可以使用mergesort类似的方法在线性时间内求得交集。布尔查询的优化，一般需要估算每个子项的size，把size小的先做and和or</p>
-<h4 id="-6709-5e8f-68c0-7d22-6a21-578b-_ranked_retrieval_model">有序检索模型 ranked retrieval model</h4>
-<p>:    词项邻近，指定查询中的两个词应该在文档中互相靠近（中间隔多少个词，是某在某个单元里，例如同一句话）</p>
-<p>布尔查询有非常高的透明度和控制力，很多图书馆的搜索都是用这样简单而高效的模型。有非常高的准确率和召回率<br>其上的优化有很多<br>1.词项表的容错能力<br>2.概念的复合短语 如 operating system不是 operating AND system<br>3.利用好词频来做可信度<br>4.返回结果的排序 对文档的好坏进行评分<br>5.逻辑与（and）和逻辑或（or）会导致检索结果在准确率和召回率向两个极端发展，很难达到合理的均衡状态</p>
-
+      
     
   </div>
   <footer>
@@ -106,7 +88,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
       
   
   <div class="tags">
-    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/读书笔记/">读书笔记</a>, <a href="/tags/倒排索引/">倒排索引</a>
+    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/最小哈希/">最小哈希</a>, <a href="/tags/min hash/">min hash</a>
   </div>
 
     
@@ -117,7 +99,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 <section id="comment">
   <h1 class="title">留言</h1>
-  <div class="ds-thread" data-title="信息检索导论读书笔记【一】">
+  <div class="ds-thread" data-title="最小哈希算法">
   </div>
 </section>
 </div>

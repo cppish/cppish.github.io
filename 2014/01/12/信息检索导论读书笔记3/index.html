@@ -89,10 +89,10 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <p>哈希表是空间换时间的方案，理论上是O(1)时间内能够插入搜索和删除。但需要足够的空间来尽量避免哈希，积累了几年之后，原来设计的哈希函数可能也已经不适用了。哈希表也不太适合词项会稍微变化的查询。如前缀查询。二叉搜索树可以解决这样的问题。AVL Tree或者红黑树，B系列的树， 是平衡二叉树， 各项操作都能在logN 时间内完成。</p>
 <h4 id="-901a-914d-7b26-67e5-8be2-">通配符查询</h4>
 <p>可以使用搜索树来一次搜索前缀， mone* 。要搜索后缀形式，一般建立一个反向b树。即从单词的后往前的顺序建立b树。</p>
-<h6 id="-8f6e-6392-7d22-5f15-_permuterm_intex">轮排索引 permuterm intex</h6>
+<h4 id="-8f6e-6392-7d22-5f15-_permuterm_intex">轮排索引 permuterm intex</h4>
 <p>在字符集中引入一个特殊字符$, 用来标记文字的结尾。对于词项hello,其实是hello$,我们建立其所有轮排的倒排索引表。<br><img src="http://cppish-github-io.qiniudn.com/permuterm_index.PNG" alt="permuterm_index"><br>对于查询<code>m*n</code>, 先转换为<code>*</code>在最后的的查询，即为<code>n$m*</code>。用<code>n$m*</code>去搜索轮排索引。对于<code>fi*mo*er</code>这种查询，先搜索<code>er$fi*</code>, 在从结果中过滤掉不包含<code>mo</code>的结果，用结果再去查倒排索引</p>
 <p>轮排索引的空间消耗会急剧增长，因为要轮排所有的可能。</p>
-<h6 id="k-gram-7d22-5f15-">k-gram索引</h6>
+<h4 id="k-gram-7d22-5f15-">k-gram索引</h4>
 <p>一个k-gram代表k个字符组成的序列。对于<code>castle</code>来说，有<code>$ca</code>, <code>cas</code>, <code>ast</code>, <code>stl</code>, <code>tle</code>, <code>le$</code>六个3-gram.  每个3-gram对应一个词项表。例如<br><img src="http://cppish-github-io.qiniudn.com/kgram_index.PNG" alt="kgram_index">  </p>
 <p>注意词项表也是按照自然序排序的</p>
 <p>对于<code>re*ve</code>查询，我们只需要求<code>$re AND ve$</code>。一般还需要对结果集再使用<code>re*ve</code>来进行一次后过滤（postfiltering）。如<code>red*</code>, 会变为求<code>$re AND red</code>。retired也变为了一个可能的结果了…</p>
@@ -146,7 +146,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 15.00px;">倒排索引</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 17.50px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 12.50px;">倒排索引</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/最小哈希/" style="font-size: 17.50px;">最小哈希</a><a href="/tags/读书笔记/" style="font-size: 15.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
   </div>
 </div>
 
@@ -159,23 +159,23 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <ul class="entry">
     
       <li>
-        <a href="/2014/01/12/信息检索导论读书笔记3/">信息检索导论读书笔记【三】</a>
+        <a href="/2014/01/13/最小哈希算法/">最小哈希算法</a>
       </li>
     
       <li>
-        <a href="/2014/01/11/信息检索导论读书笔记2/">信息检索导论读书笔记【二】</a>
+        <a href="/2014/01/13/卡方统计/">最小哈希算法</a>
       </li>
     
       <li>
-        <a href="/2014/01/08/信息检索导论读书笔记1/">信息检索导论读书笔记【一】</a>
+        <a href="/2014/01/13/信息增益/">最小哈希算法</a>
       </li>
     
       <li>
-        <a href="/2014/01/07/sublime-text-2输入当前时间/">sublime text 2输入当前时间</a>
+        <a href="/2014/01/13/交叉熵/">最小哈希算法</a>
       </li>
     
       <li>
-        <a href="/2014/01/04/hello-world/">Hello World</a>
+        <a href="/2014/01/13/互信息/">最小哈希算法</a>
       </li>
     
   </ul>
