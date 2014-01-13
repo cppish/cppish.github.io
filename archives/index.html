@@ -230,8 +230,8 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <div class="entry">
     
       <h2 id="-7d22-5f15-6784-5efa-">索引构建</h2>
-<p>indexer，indexing，index construction<br><strong>BSBI</strong> blocked sorting-based index. parse文档后形成一段适合排序的block，对其sort后，写入临时文件，最后对临时文件进行merge。重点在于利用临时文件，<strong>减少磁盘随机寻道次数</strong></p>
-
+<p>indexer，indexing，index construction<br><strong>BSBI</strong> blocked sorting-based index. 词项映射为ID，parse文档后形成一段适合排序的block，对其id sort后，写入临时文件。最后对临时文件进行merge。重点在于利用临时文件，<strong>减少磁盘随机寻道次数</strong></p>
+<p>
     
   </div>
   <footer class="end-sep">
