@@ -96,6 +96,29 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <p>一个k-gram代表k个字符组成的序列。对于<code>castle</code>来说，有<code>$ca</code>, <code>cas</code>, <code>ast</code>, <code>stl</code>, <code>tle</code>, <code>le$</code>六个3-gram.  每个3-gram对应一个词项表。例如<br><img src="http://cppish-github-io.qiniudn.com/kgram_index.PNG" alt="kgram_index">  </p>
 <p>注意词项表也是按照自然序排序的</p>
 <p>对于<code>re*ve</code>查询，我们只需要求<code>$re AND ve$</code>。一般还需要对结果集再使用<code>re*ve</code>来进行一次后过滤（postfiltering）。如<code>red*</code>, 会变为求<code>$re AND red</code>。retired也变为了一个可能的结果了…</p>
+<h4 id="-62fc-5199-6821-6b63-_spelling_correcting">拼写校正 spelling correcting</h4>
+<p>拼写校正的原则：</p>
+<ol>
+<li>对于一个拼写错误的查询，在可能的正确拼写中，选距离最近的一个</li>
+<li>距离相同时，选更常见的一个<br>主要分两类， <strong>词项独立</strong> 还是 <strong>上下文敏感</strong>。</li>
+</ol>
+<p><strong>编辑距离 edit distance</strong>, 插入，删除，替换。不同的编辑操作可以给于不同的权重。字符s替换为a的权重要低于讲s替换为p的权重。有动态规划的算法在O(mn)时间内求解。</p>
+<p><strong>k-gram</strong>，利用k-gram也可以快速搜索到候选词项，但有可能词项非常多，可以先应用<a href="http://en.wikipedia.org/wiki/Jaccard_index" target="_blank">Jaccard Distance</a>进行过滤。</p>
+<h4 id="-4e0a-4e0b-6587-654f-611f-7684-62fc-5199-6821-6b63-">上下文敏感的拼写校正</h4>
+<p>flew form Heathrow， 虽然每个独立词项都是拼写正确的，但搜索引擎发现返回文档非常少。这是就应当应用上下文敏感的拼写校正过程。穷举每个词项可能的替换。穷举过程的开销非常大。一个启发式的方式是，在对词项进行替换扩展的时候，只选取一些高频双词，高频双词可来自文档集，可来自查询日志。</p>
+<h4 id="-57fa-4e8e-53d1-97f3-7684-77eb-6b63-6280-672f-_-3c-a_href-3d-22-http-3a-2f-2f-en-wikipedia-org-2f-wiki-2f-Soundex-22-3e-soundex_algorithm-3c-2f-a-3e-">基于发音的矫正技术 <a href="http://en.wikipedia.org/wiki/Soundex" target="_blank">soundex algorithm</a></h4>
+<p>语音哈希方法：发音相似的词项映射到同一个值  </p>
+<ol>
+<li>将所有的词项转变为四字符的简化形式。基于这些简化形式建立原始词项引被称为soundex 索引。</li>
+<li>对查询词项进行同样的</li>
+<li>当对查询进行soundex 匹配时，就在soundex 索引中搜索</li>
+</ol>
+<p>在步骤1中进行四字符编码的时候，有两个原则：</p>
+<ol>
+<li>在名称转录时，元音是可以互换的</li>
+<li>读音类似的辅音编码为同一个</li>
+<li>首字母维持原样</li>
+</ol>
 
     
   </div>
@@ -105,7 +128,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
       
   
   <div class="tags">
-    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/读书笔记/">读书笔记</a>, <a href="/tags/搜索树/">搜索树</a>, <a href="/tags/哈希表/">哈希表</a>, <a href="/tags/通配符查询/">通配符查询</a>, <a href="/tags/轮排索引/">轮排索引</a>, <a href="/tags/k-gram/">k-gram</a>
+    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/读书笔记/">读书笔记</a>, <a href="/tags/搜索树/">搜索树</a>, <a href="/tags/哈希表/">哈希表</a>, <a href="/tags/通配符查询/">通配符查询</a>, <a href="/tags/轮排索引/">轮排索引</a>, <a href="/tags/k-gram/">k-gram</a>, <a href="/tags/拼写矫正/">拼写矫正</a>
   </div>
 
     
@@ -146,7 +169,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 12.50px;">倒排索引</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 17.50px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 17.50px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 17.50px;">特征降维</a><a href="/tags/读书笔记/" style="font-size: 15.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 12.50px;">倒排索引</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 17.50px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 17.50px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 17.50px;">特征降维</a><a href="/tags/读书笔记/" style="font-size: 15.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
   </div>
 </div>
 
