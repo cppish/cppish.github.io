@@ -89,8 +89,12 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <h4 id="-901a-914d-7b26-67e5-8be2-">通配符查询</h4>
 <p>可以使用搜索树来一次搜索前缀， mone* 。要搜索后缀形式，一般建立一个反向b树。即从单词的后往前的顺序建立b树。</p>
 <h6 id="-8f6e-6392-7d22-5f15-_permuterm_intex">轮排索引 permuterm intex</h6>
-<p>在字符集中引入一个特殊字符$, 用来标记文字的结尾。对于词项hello,其实是hello$,我们建立其所有轮排的倒排索引表。<br><img src="http://cppish-github-io.qiniudn.com/blogpermuterm_index.PNG" alt="permuterm_index"><br>对于查询<code>m*n</code>, 先转换为<code>*</code>在最后的的查询，即为<code>n$m*</code>。用<code>n$m*</code>去搜索轮排索引。对于<code>fi*mo*er</code>这种查询，先搜索<code>er$fi*</code>, 在从结果中过滤掉不包含<code>mo</code>的结果，用结果再去查倒排索引</p>
+<p>在字符集中引入一个特殊字符$, 用来标记文字的结尾。对于词项hello,其实是hello$,我们建立其所有轮排的倒排索引表。<br><img src="http://cppish-github-io.qiniudn.com/permuterm_index.PNG" alt="permuterm_index"><br>对于查询<code>m*n</code>, 先转换为<code>*</code>在最后的的查询，即为<code>n$m*</code>。用<code>n$m*</code>去搜索轮排索引。对于<code>fi*mo*er</code>这种查询，先搜索<code>er$fi*</code>, 在从结果中过滤掉不包含<code>mo</code>的结果，用结果再去查倒排索引</p>
 <p>轮排索引的空间消耗会急剧增长，因为要轮排所有的可能。</p>
+<h6 id="k-gram-7d22-5f15-">k-gram索引</h6>
+<p>一个k-gram代表k个字符组成的序列。对于<code>castle</code>来说，有<code>$ca</code>, <code>cas</code>, <code>ast</code>, <code>stl</code>, <code>tle</code>, <code>le$</code>六个3-gram.  每个3-gram对应一个词项表。例如<br><img src="http://cppish-github-io.qiniudn.com/kgram_index.PNG" alt="kgram_index">  </p>
+<p>注意词项表也是按照自然序排序的</p>
+<p>对于<code>re*ve</code>查询，我们只需要求<code>$re AND ve$</code>。一般还需要对结果集再使用<code>re*ve</code>来进行一次后过滤（postfiltering）。如<code>red*</code>, 会变为求<code>$re AND red</code>。retired也变为了一个可能的结果了…</p>
 
     
   </div>
@@ -271,7 +275,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 15.00px;">倒排索引</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 15.00px;">倒排索引</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/读书笔记/" style="font-size: 20.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
   </div>
 </div>
 
