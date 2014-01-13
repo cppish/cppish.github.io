@@ -86,24 +86,16 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
       <h2 id="-8bcd-5178-53ca-5bb9-9519-5f0f-68c0-7d22-">词典及容错式检索</h2>
 <p>通过倒排索引能够处理布尔查询和邻近查询了，但查询语句中如果存在拼写错误，或者用户本身就不确定，如何保证查询的鲁棒性？如何支持通配符？</p>
-<p>常见的做法是加一层索引，先索引到词，再索引到标准的倒排索引</p>
-<h4 id="-8bcd-5178-641c-7d20-7684-6570-636e-7ed3-6784-">词典搜素的数据结构</h4>
-<p>词典的存储包括<strong>哈希表</strong>方式和<strong>搜索树</strong>方式</p>
-<p>哈希表是空间换时间的方案，理论上是O(1)时间内能够插入搜索和删除。但需要足够的空间来尽量避免哈希，积累了几年之后，原来设计的哈希函数可能也已经不适用了。哈希表也不太适合词项会稍微变化的查询。如前缀查询。二叉搜索树可以解决这样的问题。AVL Tree或者红黑树，B系列的树， 是平衡二叉树， 各项操作都能在logN 时间内完成。</p>
-<h4 id="-901a-914d-7b26-67e5-8be2-">通配符查询</h4>
-<p>可以使用搜索树来一次搜索前缀， mone* 。要搜索后缀形式，一般建立一个反向b树。即从单词的后往前的顺序建立b树。</p>
-<h6 id="-8f6e-6392-7d22-5f15-_permuterm_intex">轮排索引 permuterm intex</h6>
-<p>在字符集中引入一个特殊字符$, 用来标记文字的结尾。对于词项hello,其实是hello$,我们建立其所有轮排的倒排索引表。<br><img src="http://cppish-github-io.qiniudn.com/permuterm_index.PNG" alt="permuterm_index"><br>对于查询<code>m*n</code>, 先转换为<code>*</code>在最后的的查询，即为<code>n$m*</code>。用<code>n$m*</code>去搜索轮排索引。对于<code>fi*mo*er</code>这种查询，先搜索<code>er$fi*</code>, 在从结果中过滤掉不包含<code>mo</code>的结果，用结果再去查倒排索引</p>
-<p>轮排索引的空间消耗会急剧增长，因为要轮排所有的可能。</p>
-<h6 id="k-gram-7d22-5f15-">k-gram索引</h6>
-<p>一个k-gram代表k个字符组成的序列。对于<code>castle</code>来说，有<code>$ca</code>, <code>cas</code>, <code>ast</code>, <code>stl</code>, <code>tle</code>, <code>le$</code>六个3-gram.  每个3-gram对应一个词项表。例如<br><img src="http://cppish-github-io.qiniudn.com/kgram_index.PNG" alt="kgram_index">  </p>
-<p>注意词项表也是按照自然序排序的</p>
-<p>对于<code>re*ve</code>查询，我们只需要求<code>$re AND ve$</code>。一般还需要对结果集再使用<code>re*ve</code>来进行一次后过滤（postfiltering）。如<code>red*</code>, 会变为求<code>$re AND red</code>。retired也变为了一个可能的结果了…</p>
+<p>常见的做法是加一层索引，先索引到词项目，再索引到标准的倒排索引</p>
 
     
   </div>
   <footer class="end-sep">
     
+      
+        <div class="alignleft">
+          <a href="/2014/01/12/信息检索导论读书笔记3/#more" class="more-link">阅读更多</a>
+        </div>
       
       
     
