@@ -96,9 +96,9 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <p>本章介绍的都是无损压缩，对于LSA，特征选择等这样的有损压缩，获得了文档更紧凑的表示，在很多应用场景下是可容忍的。 如用户不关心搜索引擎返回结果的最后几页的相关性。</p>
 <p>语言词汇量的大小，牛津英语词典收录了600000个单词，实际词汇量还会包括人名地名产品名等。当然可能是使用了k-gram索引没有直接对词汇进行索引，汉语可以使用汉字来做索引</p>
 <p><strong>Heaps定律</strong> </p>
-<script type="math/tex">M = kT^b</script>  
-即词汇数目（M)和文档数目（T）在对数空间内是线性相关的。一般<script type="math/tex">30\lek\ge100, b\approx0.3</script>
+<script type="math/tex">M = kT^b</script>
 
+<p>即词汇数目（M)和文档数目（T）在对数空间内是线性相关的。一般<script type="math/tex">30\leq{ k }\leq{ 100 }, b\approx0.3</script></p>
 <p>可见</p>
 <ol>
 <li>随着文档数目的增加，词汇量会持续增长而不会稳定到一个最大值；</li>
