@@ -97,7 +97,15 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <p>语言词汇量的大小，牛津英语词典收录了600000个单词，实际词汇量还会包括人名地名产品名等。当然可能是使用了k-gram索引没有直接对词汇进行索引，汉语可以使用汉字来做索引</p>
 <p><strong>Heaps定律</strong> </p>
 <script type="math/tex">M = kT^b</script>  
-即词汇数目（M)和文档数目（T）在对数空间内是线性相关的。<script type="math/tex">30\lek\ge100, b\approx0.3</script>
+即词汇数目（M)和文档数目（T）在对数空间内是线性相关的。一般<script type="math/tex">30\lek\ge100, b\approx0.3</script>
+
+<p>可见</p>
+<ol>
+<li>随着文档数目的增加，词汇量会持续增长而不会稳定到一个最大值；</li>
+<li>大规模文档集的词汇量也会非常大。</li>
+</ol>
+<p><strong>Zipf</strong>定律</p>
+<script type="math/tex">cf_{i}\propto\frac{ 1 }{ i }</script>
     
   </div>
   <footer>
