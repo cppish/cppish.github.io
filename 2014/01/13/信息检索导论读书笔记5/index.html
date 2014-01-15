@@ -116,6 +116,9 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <li>还可以利用连续词项的公共前缀关系 <strong>front encoding</strong><br><img src="http://cppish-github-io.qiniudn.com/front_encoding.PNG" alt="front_encoding"></li>
 </ol>
 <p>在内存还是不够的情况下，只能将词典分页存储在硬盘是，内存中只保留b树对每页的第一个词项进行索引。</p>
+<h4 id="-5012-6392-7d22-5f15-538b-7f29-">倒排索引压缩</h4>
+<p>高频词的倒排表的文档id之间的gap可能远小于文档id，低频词的倒排表的文档id之间的gap可能等于文档id的量级。可以对小数字比大数字采用更短的编码方式</p>
+<p><strong>可变字节码</strong>    <strong>Variable byte</strong> <strong>VB编码</strong><br>利用整个字节来对gap进行编码。字节的第一个bit为延续位（continuation bit），为1表示这是个gap编码的最后一个字节，为0表示这是个gap编码的中间字节。<br><img src="http://cppish-github-io.qiniudn.com/vb_encoding.PNG" alt="vb_encoding"></p>
 
     
   </div>
@@ -125,7 +128,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
       
   
   <div class="tags">
-    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/读书笔记/">读书笔记</a>, <a href="/tags/倒排索引/">倒排索引</a>, <a href="/tags/索引压缩/">索引压缩</a>
+    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/读书笔记/">读书笔记</a>, <a href="/tags/倒排索引/">倒排索引</a>, <a href="/tags/索引压缩/">索引压缩</a>, <a href="/tags/倒排索引压缩/">倒排索引压缩</a>
   </div>
 
     
@@ -166,7 +169,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 13.33px;">倒排索引</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 13.33px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 13.33px;">特征降维</a><a href="/tags/索引压缩/" style="font-size: 10.00px;">索引压缩</a><a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 13.33px;">倒排索引</a><a href="/tags/倒排索引压缩/" style="font-size: 10.00px;">倒排索引压缩</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 13.33px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 13.33px;">特征降维</a><a href="/tags/索引压缩/" style="font-size: 10.00px;">索引压缩</a><a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
   </div>
 </div>
 
