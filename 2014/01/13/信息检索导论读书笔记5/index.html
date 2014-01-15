@@ -119,6 +119,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <h4 id="-5012-6392-7d22-5f15-538b-7f29-">倒排索引压缩</h4>
 <p>高频词的倒排表的文档id之间的gap可能远小于文档id，低频词的倒排表的文档id之间的gap可能等于文档id的量级。可以对小数字比大数字采用更短的编码方式</p>
 <p><strong>可变字节码</strong>    <strong>Variable byte</strong> <strong>VB编码</strong><br>利用整个字节来对gap进行编码。字节的第一个bit为延续位（continuation bit），为1表示这是个gap编码的最后一个字节，为0表示这是个gap编码的中间字节。<br><img src="http://cppish-github-io.qiniudn.com/vb_encoding.PNG" alt="vb_encoding"></p>
+<p><strong><script type="math/tex">\gamma</script>编码</strong></p>
 
     
   </div>
