@@ -120,6 +120,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <p>高频词的倒排表的文档id之间的gap可能远小于文档id，低频词的倒排表的文档id之间的gap可能等于文档id的量级。可以对小数字比大数字采用更短的编码方式</p>
 <p><strong>可变字节码</strong>    <strong>Variable byte</strong> <strong>VB编码</strong><br>利用整个字节来对gap进行编码。字节的第一个bit为延续位（continuation bit），为1表示这是个gap编码的最后一个字节，为0表示这是个gap编码的中间字节。<br><img src="http://cppish-github-io.qiniudn.com/vb_encoding.PNG" alt="vb_encoding"></p>
 <p><strong><script type="math/tex">\gamma</script>编码</strong></p>
+<p><script type="math/tex">\gamma</script>编码将间距G表示成长度（length）和偏移（offset）两个部分进行变长编码。G的偏移实际上是G的二进制编码，但是前端的1 被去掉。比如，对13（二进制为1101）进行编码，其偏移为101。G的长度指的是偏移的长度，并采用一元编码。对于刚才的例子，偏移的长度是3 位，因此其长度部分的编码是1110。因此，13 的整个<script type="math/tex">\gamma</script>编码是1110101，即长度部分1110 和偏移部分101 的连接。<br>对<script type="math/tex">\gamma</script>编码解码时，首先读入一元编码直至遇到0 结束，比如在对1110101 解码时，会一开始读入前4 位1110。然后便知道后面的偏移部分的长度是3，因此，再正确读入后续的3 位编码101，补上原来去掉的前端的1，最后可以得到 101 -&gt; 1101 = 13。<br>很显然，偏移部分的编码长度是位<script type="math/tex">\lfloorlogG\rfloor</script>，而长度部分的编码长度为 <script type="math/tex">\lfloorlogG\rfloor</script>，因此，全部编码的长度为<script type="math/tex">2\lfloorlogG\rfloor + 1</script>位。<script type="math/tex">\gamma</script>编码的长度永远都是奇数位，而且它与我们前面提到的最优编码长度log2G 只相差一个因子2</p>
 
     
   </div>
