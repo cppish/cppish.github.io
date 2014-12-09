@@ -22,7 +22,7 @@ body {
   font-weight: 300;
 }
 .wrapper {
-  width: 680px;
+  width: '80%';
   margin: 0 auto;
   background: #dedede;
   -webkit-border-radius: 8px;
@@ -614,7 +614,7 @@ article footer .tags:before {
   margin-left: 0%;
 }
 #footer {
-  width: 680px;
+  width: '80%';
   margin: 20px auto 0;
   padding: 20px 0 0;
   color: #ccc;
