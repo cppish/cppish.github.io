@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>信息检索导论读书笔记【八】 | 我还在碎碎念</title>
+  <meta name="author" content="Fang Yong">
+  
+  <meta name="description" content="c++ | java | javascript | 分布式 | 程序员">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="信息检索导论读书笔记【八】"/>
+  <meta property="og:site_name" content="我还在碎碎念"/>
+
+  <link rel="alternate" href="/atom.xml" title="我还在碎碎念" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-17687678-1', 'cppish.github.io');
+  ga('send', 'pageview');
+
+</script>
+
+
+  
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fda0cc58cc899b3d9b11c0e4e94698618' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">我还在碎碎念</a></h1>
+  <p><a href="/">It&#39;s a feature, not a bug.</a></p>
+</div>
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/words">Words</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-02-08T22:27:12.000Z"><a href="/2014/02/08/信息检索导论读书笔记8/">2月 8 2014</a></time>
+    
+    
+  
+    <h1 class="title">信息检索导论读书笔记【八】</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="-68c0-7d22-7cfb-7edf-7684-8bc4-4ef7-">检索系统的评价</h2>
+<h4 id="-6d4b-8bd5-96c6-">测试集</h4>
+<p>test collection，测试集中包含文档的相关线判断，长尾黄金准则（gold standard）或者绝对真理（ground truth）</p>
+<p>一些随机的参数在给定的测试集上不一定能有最佳的性能，一边需要给定一个或者多个开发测试集，在一个开发测试集上调节参数至最佳性能，然后再将这些参数应用到别的测试集上，最后的性能结果才是真实性能的无偏估计。</p>
+<a id="more"></a>
+
+<p>学术界存在许多包含了语料以及查询的标准测试集</p>
+<h4 id="-6b63-786e-7387-_-53ec-56de-7387-">正确率 召回率</h4>
+<p>正确率 precision = P(relevant | retrieved)<br>召回率 recall = P(retrieved | relevant)</p>
+<p>P = true positives / (true positives + false positives)<br>R = true positives / (true positives + false negatives)</p>
+<p>精确率 F = (a*P*r / P + a*r)</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  
+  <div class="tags">
+    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/评估/">评估</a>, <a href="/tags/评价指标/">评价指标</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <div class="ds-thread" data-title="信息检索导论读书笔记【八】">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget blogroll first">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://weibo.com/ertiaobuduan/" target="_blank">我的微博</a></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/TFIDF/" style="font-size: 12.00px;">TFIDF</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 16.00px;">倒排索引</a><a href="/tags/倒排索引压缩/" style="font-size: 10.00px;">倒排索引压缩</a><a href="/tags/向量空间模型，tf-idf，余弦距离/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离</a><a href="/tags/向量空间模型，tf-idf，余弦距离，搜索引擎/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离，搜索引擎</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 14.00px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 14.00px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 14.00px;">特征降维</a><a href="/tags/索引压缩/" style="font-size: 10.00px;">索引压缩</a><a href="/tags/评价指标/" style="font-size: 12.00px;">评价指标</a><a href="/tags/评估/" style="font-size: 12.00px;">评估</a><a href="/tags/读书笔记/" style="font-size: 18.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/02/08/信息检索导论读书笔记9/">信息检索导论读书笔记【九】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/08/信息检索导论读书笔记8/">信息检索导论读书笔记【八】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/24/信息检索导论读书笔记7/">信息检索导论读书笔记【七】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/15/信息检索导论读书笔记6/">信息检索导论读书笔记【六】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/14/信息检索导论读书笔记5/">信息检索导论读书笔记【五】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      <div class="widget weibo newline">
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=0&isFans=1&uid=1794850835&verifier=fab8d67b&dpc=1"></iframe>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Fang Yong</a>
+  
+</div>
+<div class="theme-copyright">
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'cppish' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>

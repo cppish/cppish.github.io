@@ -69,18 +69,19 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <header>
     
       <div class="icon"></div>
-      <time datetime="2014-01-13T12:11:39.000Z"><a href="/2014/01/13/信息检索导论读书笔记6/">1月 13 2014</a></time>
+      <time datetime="2014-02-08T23:13:00.000Z"><a href="/2014/02/08/信息检索导论读书笔记9/">2月 8 2014</a></time>
     
     
   
-    <h1 class="title"><a href="/2014/01/13/信息检索导论读书笔记6/">信息检索导论读书笔记【五】</a></h1>
+    <h1 class="title"><a href="/2014/02/08/信息检索导论读书笔记9/">信息检索导论读书笔记【九】</a></h1>
   
 
   </header>
   
   <div class="entry">
     
-      
+      <p>结果反馈与查询的扩展</p>
+
     
   </div>
   <footer class="end-sep">
@@ -98,11 +99,122 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <header>
     
       <div class="icon"></div>
-      <time datetime="2014-01-13T12:11:39.000Z"><a href="/2014/01/13/信息检索导论读书笔记5/">1月 13 2014</a></time>
+      <time datetime="2014-02-08T22:27:12.000Z"><a href="/2014/02/08/信息检索导论读书笔记8/">2月 8 2014</a></time>
     
     
   
-    <h1 class="title"><a href="/2014/01/13/信息检索导论读书笔记5/">信息检索导论读书笔记【五】</a></h1>
+    <h1 class="title"><a href="/2014/02/08/信息检索导论读书笔记8/">信息检索导论读书笔记【八】</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="-68c0-7d22-7cfb-7edf-7684-8bc4-4ef7-">检索系统的评价</h2>
+<h4 id="-6d4b-8bd5-96c6-">测试集</h4>
+<p>test collection，测试集中包含文档的相关线判断，长尾黄金准则（gold standard）或者绝对真理（ground truth）</p>
+<p>一些随机的参数在给定的测试集上不一定能有最佳的性能，一边需要给定一个或者多个开发测试集，在一个开发测试集上调节参数至最佳性能，然后再将这些参数应用到别的测试集上，最后的性能结果才是真实性能的无偏估计。</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2014/02/08/信息检索导论读书笔记8/#more" class="more-link">阅读更多</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-25T01:11:32.000Z"><a href="/2014/01/24/信息检索导论读书笔记7/">1月 24 2014</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2014/01/24/信息检索导论读书笔记7/">信息检索导论读书笔记【七】</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="-4e00-4e2a-5b8c-6574-7684-641c-7d22-7cfb-7edf-">一个完整的搜索系统</h2>
+<p>每个term的idf可以保存在词典中<br>每个term在每个document中的tf可以保存在倒排索引中</p>
+<p>首先，要对两篇文档的评分进行比较时，不需要得到文档和查询向量之间的绝对距离，只需要知道相对距离。即</p>
+<script type="math/tex">V(q) \bullet v(d_{1}) > V(q) \bullet v(d_{2}) \Leftrightarrow v(q) \bullet v(d_{1}) > v(q) \bullet v(d_{2})</script>
+
+<p>其中V为布尔向量，v为余弦归一化向量（单位向量）。这里可以减少一步归一化。<br>其中V为布尔向量，v为余弦归一化向量（单位向量）。这里可以减少一步归一化。</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2014/01/24/信息检索导论读书笔记7/#more" class="more-link">阅读更多</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-15T23:42:49.000Z"><a href="/2014/01/15/信息检索导论读书笔记6/">1月 15 2014</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2014/01/15/信息检索导论读书笔记6/">信息检索导论读书笔记【六】</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h4 id="-53c2-6570-5316-7d22-5f15-53ca-57df-7d22-5f15-">参数化索引及域索引</h4>
+<p>文档不仅仅是一系列词项的序列。还包括元数据（metadata），包括很多<strong>字段</strong>（field），如文档的作者，标题，日期，格式等等。有时候也需要建立<strong>参数化索引 parametric index</strong>。例如通过作者，标题，日期来搜索文档。采用B树存储这样的索引。</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2014/01/15/信息检索导论读书笔记6/#more" class="more-link">阅读更多</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-15T04:11:39.000Z"><a href="/2014/01/14/信息检索导论读书笔记5/">1月 14 2014</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2014/01/14/信息检索导论读书笔记5/">信息检索导论读书笔记【五】</a></h1>
   
 
   </header>
@@ -122,7 +234,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
     
       
         <div class="alignleft">
-          <a href="/2014/01/13/信息检索导论读书笔记5/#more" class="more-link">阅读更多</a>
+          <a href="/2014/01/14/信息检索导论读书笔记5/#more" class="more-link">阅读更多</a>
         </div>
       
       
@@ -137,7 +249,42 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <header>
     
       <div class="icon"></div>
-      <time datetime="2014-01-13T12:11:39.000Z"><a href="/2014/01/13/信息检索导论读书笔记4/">1月 13 2014</a></time>
+      <time datetime="2014-01-14T04:11:39.000Z"><a href="/2014/01/13/索引构建/">1月 13 2014</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2014/01/13/索引构建/">信息检索导论读书笔记【四】</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="-7d22-5f15-6784-5efa-">索引构建</h2>
+<p>indexer，indexing，index construction<br><strong>BSBI</strong> blocked sorting-based index. 词项映射为ID，parse文档后形成一段适合排序的block，对其id sort后，写入临时文件。最后对临时文件进行merge。重点在于利用临时文件，<strong>减少磁盘随机寻道次数</strong></p>
+<p>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2014/01/13/索引构建/#more" class="more-link">阅读更多</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-14T04:11:39.000Z"><a href="/2014/01/13/信息检索导论读书笔记4/">1月 13 2014</a></time>
     
     
   
@@ -172,7 +319,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <header>
     
       <div class="icon"></div>
-      <time datetime="2014-01-13T08:14:07.000Z"><a href="/2014/01/13/卡方统计/">1月 13 2014</a></time>
+      <time datetime="2014-01-14T00:14:07.000Z"><a href="/2014/01/13/卡方统计/">1月 13 2014</a></time>
     
     
   
@@ -201,7 +348,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <header>
     
       <div class="icon"></div>
-      <time datetime="2014-01-13T08:13:47.000Z"><a href="/2014/01/13/信息增益/">1月 13 2014</a></time>
+      <time datetime="2014-01-14T00:13:47.000Z"><a href="/2014/01/13/信息增益/">1月 13 2014</a></time>
     
     
   
@@ -230,7 +377,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <header>
     
       <div class="icon"></div>
-      <time datetime="2014-01-13T08:13:34.000Z"><a href="/2014/01/13/交叉熵/">1月 13 2014</a></time>
+      <time datetime="2014-01-14T00:13:34.000Z"><a href="/2014/01/13/交叉熵/">1月 13 2014</a></time>
     
     
   
@@ -246,136 +393,6 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   </div>
   <footer class="end-sep">
     
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-  <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-13T08:12:33.000Z"><a href="/2014/01/13/互信息/">1月 13 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/13/互信息/">互信息</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-  <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-13T01:59:09.000Z"><a href="/2014/01/13/最小哈希算法/">1月 13 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/13/最小哈希算法/">最小哈希算法</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-  <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-11T16:47:51.000Z"><a href="/2014/01/12/信息检索导论读书笔记3/">1月 12 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/12/信息检索导论读书笔记3/">信息检索导论读书笔记【三】</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="-8bcd-5178-53ca-5bb9-9519-5f0f-68c0-7d22-">词典及容错式检索</h2>
-<p>通过倒排索引能够处理布尔查询和邻近查询了，但查询语句中如果存在拼写错误，或者用户本身就不确定，如何保证查询的鲁棒性？如何支持通配符？</p>
-<p>常见的做法是加一层索引，先索引到词项目，再索引到标准的倒排索引</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/01/12/信息检索导论读书笔记3/#more" class="more-link">阅读更多</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-  <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-01-11T10:16:06.000Z"><a href="/2014/01/11/信息检索导论读书笔记2/">1月 11 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/01/11/信息检索导论读书笔记2/">信息检索导论读书笔记【二】</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="-8bcd-9879-8bcd-5178-53ca-5012-6392-8bb0-5f55-8868-">词项词典及倒排记录表</h2>
-<h4 id="-8bcd-6761-5316-_tokenization">词条化 tokenization</h4>
-<p>:    编码 二进制(docx) 非线性可扫描（阿拉伯文）<br>停用词 连字符 单引号的英文中不同的意义 不是简单的空格分隔。汉语需要分词。<br>停用词 stop words, 一般是200-300个词语。现在的IR系统，一般不去除stop words，因为增加的开销并不大，但’as we may think’这样的短语中去除了停用词之后就无意义了。一般通过文档频率等统计指标来惩罚停用词而不是直接去除停用词。</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/01/11/信息检索导论读书笔记2/#more" class="more-link">阅读更多</a>
-        </div>
       
       
     
@@ -419,7 +436,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/TFIDF/" style="font-size: 10.00px;">TFIDF</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 13.33px;">倒排索引</a><a href="/tags/倒排索引压缩/" style="font-size: 10.00px;">倒排索引压缩</a><a href="/tags/向量空间模型/" style="font-size: 10.00px;">向量空间模型</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 13.33px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 13.33px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 13.33px;">特征降维</a><a href="/tags/索引压缩/" style="font-size: 10.00px;">索引压缩</a><a href="/tags/读书笔记/" style="font-size: 16.67px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/TFIDF/" style="font-size: 12.00px;">TFIDF</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 16.00px;">倒排索引</a><a href="/tags/倒排索引压缩/" style="font-size: 10.00px;">倒排索引压缩</a><a href="/tags/向量空间模型，tf-idf，余弦距离/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离</a><a href="/tags/向量空间模型，tf-idf，余弦距离，搜索引擎/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离，搜索引擎</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 14.00px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 14.00px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 14.00px;">特征降维</a><a href="/tags/索引压缩/" style="font-size: 10.00px;">索引压缩</a><a href="/tags/评价指标/" style="font-size: 12.00px;">评价指标</a><a href="/tags/评估/" style="font-size: 12.00px;">评估</a><a href="/tags/读书笔记/" style="font-size: 18.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
   </div>
 </div>
 
@@ -432,23 +449,23 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
   <ul class="entry">
     
       <li>
-        <a href="/2014/01/13/信息检索导论读书笔记6/">信息检索导论读书笔记【五】</a>
+        <a href="/2014/02/08/信息检索导论读书笔记9/">信息检索导论读书笔记【九】</a>
       </li>
     
       <li>
-        <a href="/2014/01/13/信息检索导论读书笔记5/">信息检索导论读书笔记【五】</a>
+        <a href="/2014/02/08/信息检索导论读书笔记8/">信息检索导论读书笔记【八】</a>
       </li>
     
       <li>
-        <a href="/2014/01/13/信息检索导论读书笔记4/">信息检索导论读书笔记【四】</a>
+        <a href="/2014/01/24/信息检索导论读书笔记7/">信息检索导论读书笔记【七】</a>
       </li>
     
       <li>
-        <a href="/2014/01/13/卡方统计/">卡方统计</a>
+        <a href="/2014/01/15/信息检索导论读书笔记6/">信息检索导论读书笔记【六】</a>
       </li>
     
       <li>
-        <a href="/2014/01/13/信息增益/">信息增益</a>
+        <a href="/2014/01/14/信息检索导论读书笔记5/">信息检索导论读书笔记【五】</a>
       </li>
     
   </ul>

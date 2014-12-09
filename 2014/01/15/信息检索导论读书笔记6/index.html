@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>信息检索导论读书笔记【六】 | 我还在碎碎念</title>
+  <meta name="author" content="Fang Yong">
+  
+  <meta name="description" content="c++ | java | javascript | 分布式 | 程序员">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="信息检索导论读书笔记【六】"/>
+  <meta property="og:site_name" content="我还在碎碎念"/>
+
+  <link rel="alternate" href="/atom.xml" title="我还在碎碎念" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-17687678-1', 'cppish.github.io');
+  ga('send', 'pageview');
+
+</script>
+
+
+  
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fda0cc58cc899b3d9b11c0e4e94698618' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">我还在碎碎念</a></h1>
+  <p><a href="/">It&#39;s a feature, not a bug.</a></p>
+</div>
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/words">Words</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-15T23:42:49.000Z"><a href="/2014/01/15/信息检索导论读书笔记6/">1月 15 2014</a></time>
+    
+    
+  
+    <h1 class="title">信息检索导论读书笔记【六】</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h4 id="-53c2-6570-5316-7d22-5f15-53ca-57df-7d22-5f15-">参数化索引及域索引</h4>
+<p>文档不仅仅是一系列词项的序列。还包括元数据（metadata），包括很多<strong>字段</strong>（field），如文档的作者，标题，日期，格式等等。有时候也需要建立<strong>参数化索引 parametric index</strong>。例如通过作者，标题，日期来搜索文档。采用B树存储这样的索引。</p>
+<a id="more"></a>
+
+<p><strong>域</strong>（zone）和字段很相似，但他的内容允许是自由文本。字段的取值可能性相对较小，域可以有任意的数目无限制的文本构成。比如：文章的标题和摘要可以看作域。可以对文档的不同域构建独立的倒排索引。域的名字也是可以在索引中编码的</p>
+<ol>
+<li>域是可以赋予权重的，title的权重高于body。weighted zone scoring。直接线性加权</li>
+<li>权重可以是专家赋值的，也可以是简单的机器学习而来</li>
+</ol>
+<h4 id="-8bcd-9879-9891-7387-53ca-6743-91cd-8ba1-7b97-">词项频率及权重计算</h4>
+<p>域是有权重的，词项之间也可以是有权重的。词项的权重取决于文档中出现的次数。</p>
+<p><strong>词项频率</strong> term frequency（tf）<br><strong>逆文档频率</strong> inverse document frequency（idf）</p>
+<p>collection frequency 文档集频率</p>
+<script type="math/tex">idf_{t} = log\frac{N}{df_{t}}</script>
+由于df 本身往往较大，所以通常需要将它映射到一个较小的取值范围中去
+
+**tf-idf权重**
+
+<script type="math/tex">tf-idf_{t,d} = tf_{t,d} \times idf_{t}</script>  
+
+<p><strong>向量空间模型</strong><br>一系列文档在同一向量空间中的表示 <a href="http://en.wikipedia.org/wiki/Vector_space_model" target="_blank">vector space model</a><br>VSM下如何计算文档相似度?</p>
+<ol>
+<li>求两个文档向量的差向量 这样不正确，因为两个文档长度可能相差很多</li>
+<li>余弦相似度（cosine similarity）</li>
+</ol>
+<script type="math/tex">sim(d_\{1\}, d_\{2\}) = \frac{\vec V(d_\{1\})\bullet \vec V(d_\{2\})}{|\vec V(d_\{1\})||\vec V(d_\{2\})|}</script>
+
+<p>余弦距离其实是两个向量的单位向量的长度的归一化的乘积。还是两个向量的内积（点乘）除以两向量的长度乘积。还是向量的欧式距离除以向量长度。为1时候，表示夹角为0度，向量为-1表示180度，为0表示90度。</p>
+<p>一个典型的检索系统中，先计算query中每个term的权重，最后依次每个term的倒排表，对遇到的每个document，计算d和q的向量相似度，最后加权。最后选择排名前几的作为反回结果</p>
+<p><img src="http://cppish-github-io.qiniudn.com/cosine_score.PNG" alt="cosine_score"></p>
+<h4 id="tf-idf-7684-6269-5c55-">tf-idf的扩展</h4>
+<p>对每篇文章的每个term赋予一个权重，除了原始的tf以及tf-idf外还有很多方法。</p>
+<p><strong>tf的亚线性尺度变换</strong><br>一个term在文档中出现了20次，它携带的信息的重要性不可能是只出现一次的词项的20倍。应该用对数做了平滑</p>
+<script type="math/tex">wf_{t,d} = \begin{cases}
+1 + log tf_{t,d}& \text{tf_{t,d} \g 0}\\
+0& \text{ otherwise }
+\end{cases}</script>
+
+<p><strong>tf归一化</strong>  </p>
+<script type="math/tex">ntf_{t,d} = a + (1-a) \frac{tf_{t,d}}{tf_{max}(d)}</script>
+
+<p>a为阻尼系数，取0.4，主要起平滑作用，抑制后一部分的贡献。使用归一化是为了保证波动不会非常剧烈。长文档中tf可能会非常大，这对短文档是不公平的。</p>
+<h4 id="-6743-91cd-8ba1-7b97-">权重计算</h4>
+<p>向量空间中各种相似度评分方法的不同，主要在于向量中到底存的是什么值。每种权重计算方法标记如下，一般叫做SMART记号</p>
+<p><img src="http://cppish-github-io.qiniudn.com/smart_tfidf.PNG" alt="smart_tfidf"></p>
+<h4 id="-957f-6587-6863-7684-56de-8f6c-5f52-4e00-5316-">长文档的回转归一化</h4>
+<p>长文档会造成tf的评分提高。一般需要做抑制。但长文档可能是同一内容反复出现的冗余性文档，冗余不会改变词项的相对权重。长文档也可能是包含了多个不同主题的文档，查询的term能够和文档的部分内容相匹配，但这个时候词项的相对权重如果抑制的话是不合理的。可以采用一种与查询频率及文档频率都无关的文档长度归一化方法对上述现象进行修正。</p>
+<p>首先统计文档集中文档长度和相关度之间的关系。再统计余弦归一化后的文档长度和相关线之间的关系。两条拟合线的焦点的文档长度定义为<strong>回转长度</strong>（pivot length）。</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  
+  <div class="tags">
+    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/读书笔记/">读书笔记</a>, <a href="/tags/TFIDF/">TFIDF</a>, <a href="/tags/向量空间模型，tf-idf，余弦距离/">向量空间模型，tf-idf，余弦距离</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <div class="ds-thread" data-title="信息检索导论读书笔记【六】">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget blogroll first">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://weibo.com/ertiaobuduan/" target="_blank">我的微博</a></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/TFIDF/" style="font-size: 12.00px;">TFIDF</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 16.00px;">倒排索引</a><a href="/tags/倒排索引压缩/" style="font-size: 10.00px;">倒排索引压缩</a><a href="/tags/向量空间模型，tf-idf，余弦距离/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离</a><a href="/tags/向量空间模型，tf-idf，余弦距离，搜索引擎/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离，搜索引擎</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 14.00px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 14.00px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 14.00px;">特征降维</a><a href="/tags/索引压缩/" style="font-size: 10.00px;">索引压缩</a><a href="/tags/评价指标/" style="font-size: 12.00px;">评价指标</a><a href="/tags/评估/" style="font-size: 12.00px;">评估</a><a href="/tags/读书笔记/" style="font-size: 18.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/02/08/信息检索导论读书笔记9/">信息检索导论读书笔记【九】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/08/信息检索导论读书笔记8/">信息检索导论读书笔记【八】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/24/信息检索导论读书笔记7/">信息检索导论读书笔记【七】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/15/信息检索导论读书笔记6/">信息检索导论读书笔记【六】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/14/信息检索导论读书笔记5/">信息检索导论读书笔记【五】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      <div class="widget weibo newline">
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=0&isFans=1&uid=1794850835&verifier=fab8d67b&dpc=1"></iframe>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Fang Yong</a>
+  
+</div>
+<div class="theme-copyright">
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'cppish' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>

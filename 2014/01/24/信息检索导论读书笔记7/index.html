@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>信息检索导论读书笔记【七】 | 我还在碎碎念</title>
+  <meta name="author" content="Fang Yong">
+  
+  <meta name="description" content="c++ | java | javascript | 分布式 | 程序员">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="信息检索导论读书笔记【七】"/>
+  <meta property="og:site_name" content="我还在碎碎念"/>
+
+  <link rel="alternate" href="/atom.xml" title="我还在碎碎念" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-17687678-1', 'cppish.github.io');
+  ga('send', 'pageview');
+
+</script>
+
+
+  
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fda0cc58cc899b3d9b11c0e4e94698618' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">我还在碎碎念</a></h1>
+  <p><a href="/">It&#39;s a feature, not a bug.</a></p>
+</div>
+<nav class="nav">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/words">Words</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-01-25T01:11:32.000Z"><a href="/2014/01/24/信息检索导论读书笔记7/">1月 24 2014</a></time>
+    
+    
+  
+    <h1 class="title">信息检索导论读书笔记【七】</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="-4e00-4e2a-5b8c-6574-7684-641c-7d22-7cfb-7edf-">一个完整的搜索系统</h2>
+<p>每个term的idf可以保存在词典中<br>每个term在每个document中的tf可以保存在倒排索引中</p>
+<p>首先，要对两篇文档的评分进行比较时，不需要得到文档和查询向量之间的绝对距离，只需要知道相对距离。即</p>
+<script type="math/tex">V(q) \bullet v(d_{1}) > V(q) \bullet v(d_{2}) \Leftrightarrow v(q) \bullet v(d_{1}) > v(q) \bullet v(d_{2})</script>
+
+<p>其中V为布尔向量，v为余弦归一化向量（单位向量）。这里可以减少一步归一化。<br>其中V为布尔向量，v为余弦归一化向量（单位向量）。这里可以减少一步归一化。</p>
+<a id="more"></a>
+
+<h4 id="-975e-7cbe-786e-8fd4-56de-524d-K-7bc7-6587-6863-7684-65b9-6cd5-">非精确返回前K篇文档的方法</h4>
+<p>精确查询K篇得分最高的文档需要对文档集中每一个文档进行距离计算，但计算量比较大。非精确的前K 篇文档检索并不一定是坏事。给定查询情况下，余弦相似度计算得分最高的K 篇文档在很多情况下不一定就是最好的K 篇文档，<strong>余弦相似度只不过是用户所感觉到的相似度的一个替代品</strong></p>
+<ol>
+<li>找到一个文档集合A，它包含了参与最后竞争的候选文档，其中K &lt; |A| &lt;&lt; N。A 不必包含前K 篇得分最高的文档，但是它应该包含很多和前K 篇文档得分相近的文档。</li>
+<li>返回A 中得分最高的K 篇文档</li>
+</ol>
+<h4 id="-7d22-5f15-53bb-9664-6280-672f-">索引去除技术</h4>
+<ol>
+<li>只考虑idf超过一定值的词项 如查询catcher in the rye，只有rye和catcher的倒排索引会被遍历</li>
+<li>只考虑包含多个查询项的文档 （例如包含所有查询term的文档才会候选）这样有可能候选数目小于k</li>
+</ol>
+<p><strong>胜者表</strong> champion list|top topic|fancy list</p>
+<p>对于词典中的每个term，计算出得分最高的r个文档，构成t的胜者表。对查询中所有term的胜者表求并集，生成集合A，最后只有A中的文档才参与余弦距离的计算。</p>
+<p>这里的关键参数在于r，直观上r应该比K大，但r是在索引构建的过程中就确定了。不同term的r值可以不同，非常罕见的term可以把r值设置的大一些</p>
+<p><strong>静态质量得分</strong> static quality score</p>
+<p>这个是对胜者表的扩展。首先所有的文档都有一个静态的质量得分（0，1之间），得分可能来源于用户的正面评价次数。这样一篇文章的得分可能是静态得分g(d)和查询得分的某种组合，例如简单的求和：g(d)+cosine-distance(q,d).当然也可以设置相应的权重因子。</p>
+<p>然后，倒排表的文档id按照g(d)的大小降序排列。（注意，我们只要求所有的倒排表安装统一的规则排序）</p>
+<p>最后，胜者表中我们取g(d)+tf-idf(t,d)最高的r个文档来构建t的胜者表，且按照顺序排列。最后对胜者表中的所有文档求并，计算最后得分。</p>
+<p>最后对于不足够k个最高分的情况，对于每个词项t，记录两张表，高端表（记录胜者表），低端表（记录剩下的文档），当胜者表扫描完不够k篇时候，再扫描低端表。</p>
+<p><strong>影响度排序</strong> impact ordering<br>倒排表按照文档对term的得分降序排列</p>
+<ol>
+<li>t的倒排表，只扫描前r个文档就停止，或者tf低于一个阈值</li>
+<li>查询词项按照idf降序排列，当idf降低到某个阈值，或者idf和前一个文档的idf的差改变的非常小，则可以忽略后面的值</li>
+</ol>
+<p><strong>簇剪枝法</strong> cluster pruning<br>首先对文档向量进行聚类</p>
+<ol>
+<li>从N篇文档中<strong>随机</strong>找出<script type="math/tex">\sqrt{N}</script>个文档，称为leader集合</li>
+<li>对于每个不属于leader集合的文档，计算距离最近的leader，加入到该leader的follower集合</li>
+</ol>
+<p>查询步骤：</p>
+<ol>
+<li>给定查询q， 计算他和所有leader的距离，找出最近的leader</li>
+<li>候选集合定为该leader极其所有的follower文档， 对候选中所有文档计算和q的相似度</li>
+</ol>
+<p>聚类过程很快，但要尽量反应文档向量的分布</p>
+<h4 id="-5c42-6b21-578b-7d22-5f15-">层次型索引</h4>
+<p>tiered index, 胜者表的一般形式。第一层tf阈值为20，第二层为10… 第一层查询不够k个时候才扫描第二层</p>
+<h4 id="-67e5-8be2-8bcd-9879-7684-90bb-8fd1-6027-">查询词项的邻近性</h4>
+<p>如果文档中大部分的查询词之间的位置距离比较近，说明这个文档具有聚焦用户查询意图的文本。<br>定义最小窗口大小为w， 即文档中，包含所有查询词项的窗口大小是w。w设置的越小，文档和查询的匹配程度就越高。例如“the quality of |mercy is not strained|”, 查询词项是”strained mercy”，那么w就是4.</p>
+<p><strong>软合取</strong> soft conjunctive 检索文档中只需要出现大部分查询词项即可</p>
+<h2 id="query-7684-5206-6790-4ee5-53ca-6587-6863-8bc4-5206-51fd-6570-8bbe-8ba1-">query的分析以及文档评分函数设计</h2>
+<p><strong>自由文本查询</strong> document free query, 给大多数的用户隐藏and or之类的查询操作符。<br>在这种情况下，如何组合之前提到的各种索引策略打分策略？</p>
+<p><strong>用户数量 查询发布 文档集</strong>是决定因素</p>
+<p>首先 会有查询分析器将query parse为关键词+带操作符的查询，以便能够被底层的索引结构进行处理。<br>例如在查询<code>rising interest rates</code>时，查询分析器可能包含如下三个查询：</p>
+<ol>
+<li>将rising interest rates看为一个短语查询。</li>
+<li>如果包含rising interest rates的文档数目少于10， 则改为 rising interest和interest rates两个短语查询</li>
+<li>如果依然结果很少，则利用VSM求解，这时认为三个查询词项是独立的</li>
+</ol>
+<p>上述的每一个步骤都会产生一个文档得分列表，可能融合了距离计算，静态文档得分，邻近位置加权等。如何综合这些得分？</p>
+<ol>
+<li>手动配置</li>
+<li>机器学习方法来评分</li>
+</ol>
+<h4 id="-641c-7d22-7cfb-7edf-7684-7ec4-6210-">搜索系统的组成</h4>
+<p><img src="http://cppish-github-io.qiniudn.com/retriving_systems.PNG" alt="retriving_systems"></p>
+<h4 id="VSM-5bf9-68c0-7d22-7684-652f-6301-">VSM对检索的支持</h4>
+<p>VSM可以直接应用到检索系统中， 包括布尔查询，通配符查询，对于短语查询，由于VSM中没有记录term间的位置信息，所以常常将二元词看为term，来减少转换过程中位置信息的过分丢失</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+  
+  <div class="tags">
+    <a href="/tags/信息检索/">信息检索</a>, <a href="/tags/Information Retrieval/">Information Retrieval</a>, <a href="/tags/读书笔记/">读书笔记</a>, <a href="/tags/TFIDF/">TFIDF</a>, <a href="/tags/向量空间模型，tf-idf，余弦距离，搜索引擎/">向量空间模型，tf-idf，余弦距离，搜索引擎</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <div class="ds-thread" data-title="信息检索导论读书笔记【七】">
+  </div>
+</section>
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+
+<div class="widget blogroll first">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://weibo.com/ertiaobuduan/" target="_blank">我的微博</a></li>
+  
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Information Retrieval/" style="font-size: 20.00px;">Information Retrieval</a><a href="/tags/LSH/" style="font-size: 10.00px;">LSH</a><a href="/tags/TFIDF/" style="font-size: 12.00px;">TFIDF</a><a href="/tags/k-gram/" style="font-size: 10.00px;">k-gram</a><a href="/tags/min hash/" style="font-size: 10.00px;">min hash</a><a href="/tags/sublime text 2/" style="font-size: 10.00px;">sublime text 2</a><a href="/tags/二元词索引/" style="font-size: 10.00px;">二元词索引</a><a href="/tags/信息检索/" style="font-size: 20.00px;">信息检索</a><a href="/tags/倒排索引/" style="font-size: 16.00px;">倒排索引</a><a href="/tags/倒排索引压缩/" style="font-size: 10.00px;">倒排索引压缩</a><a href="/tags/向量空间模型，tf-idf，余弦距离/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离</a><a href="/tags/向量空间模型，tf-idf，余弦距离，搜索引擎/" style="font-size: 10.00px;">向量空间模型，tf-idf，余弦距离，搜索引擎</a><a href="/tags/哈希表/" style="font-size: 10.00px;">哈希表</a><a href="/tags/拼写矫正/" style="font-size: 10.00px;">拼写矫正</a><a href="/tags/插件/" style="font-size: 10.00px;">插件</a><a href="/tags/搜索树/" style="font-size: 10.00px;">搜索树</a><a href="/tags/文本分类/" style="font-size: 14.00px;">文本分类</a><a href="/tags/最小哈希/" style="font-size: 10.00px;">最小哈希</a><a href="/tags/特征抽取/" style="font-size: 14.00px;">特征抽取</a><a href="/tags/特征降维/" style="font-size: 14.00px;">特征降维</a><a href="/tags/索引压缩/" style="font-size: 10.00px;">索引压缩</a><a href="/tags/评价指标/" style="font-size: 12.00px;">评价指标</a><a href="/tags/评估/" style="font-size: 12.00px;">评估</a><a href="/tags/读书笔记/" style="font-size: 18.00px;">读书笔记</a><a href="/tags/跳转表/" style="font-size: 10.00px;">跳转表</a><a href="/tags/轮排索引/" style="font-size: 10.00px;">轮排索引</a><a href="/tags/通配符查询/" style="font-size: 10.00px;">通配符查询</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/02/08/信息检索导论读书笔记9/">信息检索导论读书笔记【九】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/08/信息检索导论读书笔记8/">信息检索导论读书笔记【八】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/24/信息检索导论读书笔记7/">信息检索导论读书笔记【七】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/15/信息检索导论读书笔记6/">信息检索导论读书笔记【六】</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/14/信息检索导论读书笔记5/">信息检索导论读书笔记【五】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      <div class="widget weibo newline">
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=0&isFans=1&uid=1794850835&verifier=fab8d67b&dpc=1"></iframe>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Fang Yong</a>
+  
+</div>
+<div class="theme-copyright">
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'cppish' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
